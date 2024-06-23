@@ -1,1 +1,32 @@
+### Create Event
+# @name createEvent
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "name": "New Event",
+    "date": "2024-01-01T00:00:00",
+    "description": "This is a new event",
+    "price": 100
+}
+
+###
+@eventId = {{ createEvent.response.body.id }}
+
+### Find All Events
 GET http://localhost:3000/events
+
+### Find Unique Event
+GET http://localhost:3000/events/{{eventId}}
+
+### Find Unique Event
+PATCH  http://localhost:3000/events/{{eventId}}
+Content-Type: application/json
+
+{
+    "description": "This is a other event",
+    "price": 399
+}
+
+### Delete Event
+DELETE  http://localhost:3000/events/0968757e-59bd-4080-91e8-e10aa5492c2a
